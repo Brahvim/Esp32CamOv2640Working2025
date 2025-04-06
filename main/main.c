@@ -1,19 +1,18 @@
-#include <stdio.h>
-
-#include <esp_log.h>
-#include <freertos/FreeRTOS.h>
+#include <freertos/FreeRTOS.h> // MUST BE first!
 #include <freertos/task.h>
+#include <esp_log.h>
+#include <stdio.h>
 
 #include "app_macros.h"
 #include "app_camera.h"
-#include "app_camera_pins.h"
 
-static const char *s_tag = "app_" __FILE__;
+static const char *s_tag = __FILE__;
 
 void app_main(void) {
 	app_init_camera();
 
 	while (1) {
+
 		ESP_LOGI(s_tag, "Taking picture...");
 		camera_fb_t *fb = esp_camera_fb_get();
 
@@ -21,6 +20,7 @@ void app_main(void) {
 		esp_camera_fb_return(fb);
 
 		// uint8_t const *pic_data_raw = fb->buf;
-		vTaskDelay(5000 / portTICK_PERIOD_MS); // 5s wait.
+		vTaskDelay(pdMS_TO_TICKS(5000)); // 5s wait.
+
 	}
 }

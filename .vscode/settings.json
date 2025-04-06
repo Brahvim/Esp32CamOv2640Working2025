@@ -20,7 +20,10 @@
         "esp_camera.h": "c",
         "esp_log.h": "c",
         "*.tcc": "c",
-        "ledc.h": "c"
+        "ledc.h": "c",
+        "freertos.h": "c",
+        "app_camera.h": "c",
+        "endian.h": "c"
     },
     "cSpell.words": [
         "ledc",
@@ -37,6 +40,6 @@
         "xclk"
     ],
     "idf.pythonInstallPath": "/usr/bin/python3",
-    "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json",
-    "idf.flashType": "UART"
+    "idf.flashType": "UART",
+    "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json"
 }

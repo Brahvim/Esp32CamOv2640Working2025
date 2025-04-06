@@ -2,7 +2,6 @@
 
 #include "app_macros.h"
 #include "app_camera.h"
-#include "app_camera_pins.h"
 
 sensor_t *g_sensor;
 camera_config_t g_camera_config = {
@@ -21,13 +20,13 @@ camera_config_t g_camera_config = {
 
 	.pin_href = 23,
 	.pin_pwdn = 32,
-	.pin_reset = -1,
+	.pin_reset = -1, // `-1` causes **software resets** only!
 	.pin_vsync = 25,
 
-	.pin_sccb_scl = 27,
-	.pin_sccb_sda = 26,
+	.pin_sccb_scl = 27, // Part of the SCCB DMA protocol...
+	.pin_sccb_sda = 26, // Part of the SCCB DMA protocol...
 
-	.xclk_freq_hz = 20000000,
+	.xclk_freq_hz = 20000000, // 20M, i.e. 20MHz.
 	.ledc_timer = LEDC_TIMER_0,
 	.ledc_channel = LEDC_CHANNEL_0,
 
@@ -43,17 +42,9 @@ camera_config_t g_camera_config = {
 static const char *s_tag = __FILE__;
 
 void app_init_camera(void) {
-	esp_err_t initError = esp_camera_init(&g_camera_config);
-	g_sensor = esp_camera_sensor_get();
-
-	ifl(g_sensor->id.PID != OV2640_PID) {
-
-		ESP_LOGE("camera", "Unsupported camera sensor!");
-
-	}
-
-	ESP_LOGI(s_tag, "Pixel format: `%d`.", g_sensor->pixformat);
-
-	ifu(ESP_OK != initError)
+	ifu(ESP_OK != esp_camera_init(&g_camera_config))
 		ESP_LOGE(s_tag, "Camera didn't start.");
+
+	g_sensor = esp_camera_sensor_get();
+	ESP_LOGI(s_tag, "Pixel format: `%d`.", g_sensor->pixformat);
 }

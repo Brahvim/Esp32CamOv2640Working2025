@@ -2,5 +2,7 @@
 
 #include <esp_camera.h>
 
-void app_init_camera(void);
+extern sensor_t *g_sensor;
 extern camera_config_t g_camera_config;
+
+void app_init_camera(void);

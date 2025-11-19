@@ -2,4 +2,5 @@
 
 #include <esp_log.h>
 
-static const char *s_tag = __FILE__;
+#define s_tag __FILE_NAME__
+// static const char *s_tag = __FILE__;

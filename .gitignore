@@ -1,4 +1,5 @@
 build/
+SECRETS.H
 managed_components/
 
 # Plasma/Dolphin DB thing :>

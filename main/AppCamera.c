@@ -1,9 +1,10 @@
-#include "AppLog.h"
-#include "AppMacros.h"
 #include "AppCamera.h"
+#include "AppMacros.h"
+#include "AppLog.h"
 
-sensor_t *g_appCamSensor;
 camera_config_t g_appCamConfig = {
+
+	// region SCCB config.
 
 	.pin_d0 = 5,
 	.pin_d1 = 18,
@@ -29,14 +30,17 @@ camera_config_t g_appCamConfig = {
 	.ledc_timer = LEDC_TIMER_0,
 	.ledc_channel = LEDC_CHANNEL_0,
 
+	// endregion
+
 	.fb_count = 1,
 	.jpeg_quality = 63,
-	.frame_size = FRAMESIZE_VGA,
+	.frame_size = FRAMESIZE_XGA,
 	.pixel_format = PIXFORMAT_JPEG, // `PIXFORMAT_JPEG` for streaming. `PIXFORMAT_RGB565` for face detection and recognition.
+	.grab_mode = CAMERA_GRAB_LATEST,
 	.fb_location = CAMERA_FB_IN_PSRAM,
-	.grab_mode = CAMERA_GRAB_WHEN_EMPTY,
 
 };
+sensor_t *g_appCamSensor;
 
 void appInitCam(void) {
 	ifu(ESP_OK != esp_camera_init(&g_appCamConfig)) {

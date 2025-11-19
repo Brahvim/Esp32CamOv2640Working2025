@@ -6,13 +6,13 @@
         "OPENOCD_SCRIPTS": "/home/brahvim/Documents/Code/WindowsCode/Arduino/Hardware/Espressif/esp-idf/tools/tools/openocd-esp32/v0.12.0-esp32-20230419/openocd-esp32/share/openocd/scripts",
         "ESP_ROM_ELF_DIR": "/home/brahvim/Documents/Code/WindowsCode/Arduino/Hardware/Espressif/esp-idf/tools/tools/esp-rom-elfs/20230320/"
     },
-    "idf.espIdfPath": "/home/brahvim/Espressif/Idf/v5.3.1/",
+    "idf.espIdfPath": "/home/brahvim/Espressif/Idf/v5.5.1/",
     "idf.openOcdConfigs": [
         "board/esp32-wrover-kit-3.3v.cfg"
     ],
     "idf.port": "/dev/ttyUSB0",
     "idf.pythonBinPath": "/home/brahvim/Documents/Code/WindowsCode/Arduino/Hardware/Espressif/esp-idf/tools/python_env/idf5.1_py3.11_env/bin/python",
-    "idf.toolsPath": "/home/brahvim/Espressif/Idf/v5.3.1/tools/",
+    "idf.toolsPath": "/home/brahvim/Espressif/Idf/v5.5.1/tools/",
     "files.associations": {
         "*.s": "asm-intel-x86-generic",
         "*.asm": "asm-intel-x86-generic",
@@ -39,7 +39,7 @@
         "VSYNC",
         "xclk"
     ],
-    "idf.pythonInstallPath": "/usr/bin/python3",
     "idf.flashType": "UART",
+    "idf.pythonInstallPath": "/usr/bin/python3",
     "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json"
 }
